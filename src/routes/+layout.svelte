@@ -26,11 +26,10 @@
 <nav class="border-b bg-background">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 items-center justify-between">
+			<div></div>
 			<div class="flex items-center space-x-4">
 				<a href="/login" class="text-sm font-medium hover:text-primary">Login</a>
 				<a href="/register" class="text-sm font-medium hover:text-primary">Register</a>
-			</div>
-			<div class="flex items-center">
 				<Button variant="ghost" size="icon" on:click={toggleDarkMode}>
 					{#if isDarkMode}
 						<Sun class="h-[1.2rem] w-[1.2rem]" />
