@@ -17,7 +17,7 @@
 			</div>
 		</Card.Content>
 		<Card.Footer>
-			<Button>Login</Button>
+			<Button class="w-full">Login</Button>
 		</Card.Footer>
 	</Card.Root>
 </div>

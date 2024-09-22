@@ -20,7 +20,7 @@
 			</div>
 		</Card.Content>
 		<Card.Footer>
-			<Button>Register</Button>
+			<Button class="w-full">Register</Button>
 		</Card.Footer>
 	</Card.Root>
 </div>
