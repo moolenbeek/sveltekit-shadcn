@@ -8,16 +8,21 @@
 	<Card.Root class="w-[350px]">
 		<Card.Header>
 			<Card.Title>Login</Card.Title>
-			<Card.Description>Don't have an account? <a href="/register" class="text-primary">Register</a></Card.Description>
+			<Card.Description
+				>Don't have an account? <a href="/register" class="text-primary">Register</a
+				></Card.Description
+			>
 		</Card.Header>
-		<Card.Content>
-			<Input type="text" placeholder="Username" />
-			<div class="mt-4">
-				<Input type="password" placeholder="Password" />
-			</div>
-		</Card.Content>
-		<Card.Footer>
-			<Button class="w-full">Login</Button>
-		</Card.Footer>
+		<form method="POST">
+			<Card.Content>
+				<Input type="text" id="name" name="name" placeholder="Username" required />
+				<div class="mt-4">
+					<Input type="password" id="password" name="password" placeholder="Password" required />
+				</div>
+			</Card.Content>
+			<Card.Footer>
+				<Button type="submit" class="w-full">Login</Button>
+			</Card.Footer>
+		</form>
 	</Card.Root>
 </div>

@@ -1,5 +1,8 @@
 node_modules
 
+# DB
+/src/lib/database/migrations
+
 # Output
 .output
 .vercel

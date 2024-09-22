@@ -3,12 +3,14 @@
 	import { ModeWatcher } from "mode-watcher";
 	import { Button } from "$lib/components/ui/button";
 	import { Sun, Moon } from "lucide-svelte";
-	import { onMount } from 'svelte';
+	import { onMount } from "svelte";
+	import type { PageData } from "./$types";
+	export let data: PageData;
 
 	let isDarkMode: boolean;
 
 	onMount(() => {
-		isDarkMode = document.documentElement.classList.contains('dark');
+		isDarkMode = document.documentElement.classList.contains("dark");
 	});
 
 	function toggleDarkMode() {
@@ -19,6 +21,8 @@
 	$: if (isDarkMode !== undefined) {
 		document.documentElement.classList.toggle("dark", isDarkMode);
 	}
+
+	console.log(data.user);
 </script>
 
 <ModeWatcher />
@@ -28,8 +32,15 @@
 		<div class="flex h-16 items-center justify-between">
 			<div></div>
 			<div class="flex items-center space-x-4">
-				<a href="/login" class="text-sm font-medium hover:text-primary">Login</a>
-				<a href="/register" class="text-sm font-medium hover:text-primary">Register</a>
+				{#if !data.user}
+					<a href="/login" class="text-sm font-medium hover:text-primary">Login</a>
+					<a href="/register" class="text-sm font-medium hover:text-primary">Register</a>
+				{:else}
+					<a href="/">{data.user.name}</a>
+					<form action="/logout" method="POST">
+						<Button type="submit" class="outline">Logout</Button>
+					</form>
+				{/if}
 				<Button variant="ghost" size="icon" on:click={toggleDarkMode}>
 					{#if isDarkMode}
 						<Sun class="h-[1.2rem] w-[1.2rem]" />
