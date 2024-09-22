@@ -2,14 +2,29 @@
 	"name": "sveltekit-shadcn",
 	"version": "0.0.1",
 	"private": true,
+	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"dev": "vite dev",
+		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@lucia-auth/adapter-drizzle": "^1.1.0",
+		"bits-ui": "^0.21.15",
+		"clsx": "^2.1.1",
+		"dotenv": "^16.4.5",
+		"drizzle-orm": "^0.33.0",
+		"lucia": "^3.2.0",
+		"lucide-svelte": "^0.445.0",
+		"mode-watcher": "^0.4.1",
+		"oslo": "^1.2.1",
+		"pg": "^8.12.0",
+		"tailwind-merge": "^2.5.2",
+		"tailwind-variants": "^0.2.1"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -17,7 +32,9 @@
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@tailwindcss/typography": "^0.5.14",
 		"@types/eslint": "^9.6.0",
+		"@types/pg": "^8.11.10",
 		"autoprefixer": "^10.4.20",
+		"drizzle-kit": "^0.24.2",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
@@ -31,14 +48,5 @@
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",
 		"vite": "^5.0.3"
-	},
-	"type": "module",
-	"dependencies": {
-		"bits-ui": "^0.21.15",
-		"clsx": "^2.1.1",
-		"lucide-svelte": "^0.445.0",
-		"mode-watcher": "^0.4.1",
-		"tailwind-merge": "^2.5.2",
-		"tailwind-variants": "^0.2.1"
 	}
 }
