@@ -8,7 +8,7 @@
 	<Card.Root class="w-[350px]">
 		<Card.Header>
 			<Card.Title>Login</Card.Title>
-			<Card.Description>Login to your account to continue</Card.Description>
+			<Card.Description>Don't have an account? <a href="/register" class="text-primary">Register</a></Card.Description>
 		</Card.Header>
 		<Card.Content>
 			<Input type="text" placeholder="Username" />
