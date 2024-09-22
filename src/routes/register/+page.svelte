@@ -4,7 +4,7 @@
 	import { Input } from "$lib/components/ui/input/index";
 </script>
 
-<div class="flex min-h-screen items-center justify-center">
+<div class="flex items-center justify-center pt-16">
 	<Card.Root class="w-[350px]">
 		<Card.Header>
 			<Card.Title>Register</Card.Title>
