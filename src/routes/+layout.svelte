@@ -34,7 +34,7 @@
 			<div class="flex items-center space-x-4">
 				{#if !data.user}
 					<a href="/login" class="text-sm font-medium hover:text-primary">Login</a>
-						<a href="/register" class="text-sm font-medium hover:text-primary">Register</a>
+					<a href="/register" class="text-sm font-medium hover:text-primary">Register</a>
 				{:else}
 					<a href="/">{data.user.name}</a>
 					<form action="/logout" method="POST">
