@@ -4,13 +4,35 @@ import type { Actions } from "./$types";
 import { Argon2id } from "oslo/password";
 import { lucia } from "$lib/database/lucia"; // Import lucia
 
+// superform validation
+import { userSchema } from "$lib/config/zod-schemas";
+import { setError, superValidate } from "sveltekit-superforms/server";
+import { zod } from "sveltekit-superforms/adapters";
+
+const signUpSchema = userSchema.pick({
+	name: true,
+	email: true,
+	password: true
+});
+
+export const load = async (event) => {
+	if (event.locals.user) {
+		redirect(302, "/");
+	}
+	const form = await superValidate(event, zod(signUpSchema));
+	return {
+		form
+	};
+};
+
 export const actions: Actions = {
 	default: async function ({ request, cookies }) {
-		// Add cookies parameter
-		let { name, email, password } = Object.fromEntries(await request.formData()) as Record<
-			string,
-			string
-		>;
+		const form = await superValidate(request, zod(signUpSchema));
+		if (!form.valid) {
+			return fail(400, { form });
+		}
+
+		let { name, email, password } = form.data;
 
 		password = await new Argon2id().hash(password);
 		const id = crypto.randomUUID();
@@ -29,8 +51,8 @@ export const actions: Actions = {
 			});
 		} catch (err) {
 			console.error(err);
-			return fail(400, { message: "Could not register user" });
+			return setError(form, 'email', 'Could not register user');
 		}
-		throw redirect(302, "/"); // Redirect to home page instead of login
+		throw redirect(302, "/");
 	}
 };

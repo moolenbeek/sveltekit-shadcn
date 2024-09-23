@@ -2,6 +2,11 @@
 	import * as Card from "$lib/components/ui/card/index";
 	import { Button } from "$lib/components/ui/button/index";
 	import { Input } from "$lib/components/ui/input/index";
+	import { superForm } from "sveltekit-superforms";
+	export let data;
+
+	// Client API:
+	const { form, errors, enhance } = superForm(data.form);
 </script>
 
 <div class="flex items-center justify-center pt-16">
@@ -13,11 +18,14 @@
 				></Card.Description
 			>
 		</Card.Header>
-		<form method="POST">
+		<form method="POST" use:enhance>
 			<Card.Content>
-				<Input type="text" id="name" name="name" placeholder="Username" required />
+				<Input type="text" id="name" name="name" placeholder="Username" bind:value={$form.name} required />
+				{#if $errors.name}<p class="text-red-500 text-sm mt-1">{$errors.name}</p>{/if}
+				
 				<div class="mt-4">
-					<Input type="password" id="password" name="password" placeholder="Password" required />
+					<Input type="password" id="password" name="password" placeholder="Password" bind:value={$form.password} required />
+					{#if $errors.password}<p class="text-red-500 text-sm mt-1">{$errors.password}</p>{/if}
 				</div>
 			</Card.Content>
 			<Card.Footer>
